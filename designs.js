@@ -3,8 +3,13 @@
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid() {
+const sizeForm = document.querySelector('#sizePicker');
 
-// Your code goes here!
+sizeForm.addEventListener('submit',makeGrid);
 
+
+function makeGrid(event) {
+  event.preventDefault();
+  console.log('The form has been submitted');
+  
 }
