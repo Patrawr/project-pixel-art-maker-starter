@@ -35,14 +35,15 @@ function changeColor() {
 //set the color of a table cell to the global color
 function pickCell(event) {
     if(event.target.nodeName === 'TD') {
-    event.target.style.backgroundColor = pickerColor;
+        event.target.style.backgroundColor = pickerColor;
     }
 }
 
-
+//setting up event listener for the submit button to draw the grid
 const sizeForm = document.querySelector('#sizePicker');
 sizeForm.addEventListener('submit',makeGrid);
 
+//setting up event listener for color picker
 const picker = document.querySelector('#colorPicker');
 picker.addEventListener('change',changeColor);
 let pickerColor = picker.value;
