@@ -1,6 +1,6 @@
 // Select color input
 // Select size input
-let pickerColor;
+
 
 // When size is submitted by the user, call makeGrid()
 function makeGrid(event) {
@@ -9,9 +9,6 @@ function makeGrid(event) {
     
     const gridHeight = document.querySelector('#inputHeight');
     const gridWidth = document.querySelector('#inputWidth');
-
-    //store the parent canvas table element in a var
-    const canvas = document.querySelector('#pixelCanvas');
 
     //clear out the old table elements
     while (canvas.firstElementChild) {
@@ -31,18 +28,25 @@ function makeGrid(event) {
   }
 
 //gets the new color and stores in a global variable  
-function changeColor(event) {
-    pickerColor = event.value;
+function changeColor() {
+    pickerColor = picker.value;
 }  
 
+//set the color of a table cell to the global color
 function pickCell(event) {
-
+    if(event.target.nodeName === 'TD') {
+    event.target.style.backgroundColor = pickerColor;
+    }
 }
+
 
 const sizeForm = document.querySelector('#sizePicker');
 sizeForm.addEventListener('submit',makeGrid);
 
 const picker = document.querySelector('#colorPicker');
 picker.addEventListener('change',changeColor);
+let pickerColor = picker.value;
 
-
+//store the parent canvas table element in a var
+const canvas = document.querySelector('#pixelCanvas');
+canvas.addEventListener('click',pickCell);
